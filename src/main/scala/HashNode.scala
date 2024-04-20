@@ -1,0 +1,1 @@
+case class HashNode[K, V](key: K, var value: V)
