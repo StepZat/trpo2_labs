@@ -33,11 +33,9 @@ class HashTable[K, V <: Vector] {
 
   def size: Int = buckets.map(_.size).sum
 
-  case class HashNode[K, V <: Vector](key: K, var value: V)
-
   def getBucketData: Seq[(Int, Seq[HashNode[K, V]])] = {
     buckets.zipWithIndex.map { case (bucket, index) =>
-      (index, bucket.toSeq) // возвращаем Seq[HashNode[K, V]], где HashNode содержит и key, и value
+      (index, bucket.toSeq)
     }.toSeq
   }
 

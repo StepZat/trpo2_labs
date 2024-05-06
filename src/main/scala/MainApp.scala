@@ -8,9 +8,8 @@ import scalafx.event.ActionEvent
 import scalafx.Includes._
 import scalafx.beans.property.ObjectProperty
 import scalafx.scene.control.Alert
-import scalafx.scene.control.Alert.AlertType
 import scalafx.stage.FileChooser
-import java.io.{BufferedReader, BufferedWriter, FileReader, FileWriter, PrintWriter}
+import java.io.{BufferedWriter,FileWriter}
 import scala.io.Source
 
 object MainApp extends JFXApp {
@@ -213,7 +212,4 @@ object MainApp extends JFXApp {
     }
     tableView.items = ObservableBuffer(data: _*)
   }
-  //def updateTableView(): Unit = {
-  //  tableView.items = ObservableBuffer(hashTable.getAll: _*)
-  //}
 }

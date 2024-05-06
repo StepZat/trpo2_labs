@@ -1,8 +1,3 @@
-//sealed trait Vector {
-//  def keyRepresentation: String
-//  def valueRepresentation: String
-//}
-
 case class PolarVector(length: Double, angle: Double) extends Vector {
   def keyRepresentation: String = s"Polar: Length=$length, Angle=$angle"
   def valueRepresentation: String = s"($length, $angle)"
