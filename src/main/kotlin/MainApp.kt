@@ -9,13 +9,13 @@ import java.io.*
 
 class MainApp : App(MainView::class)
 
-class MainView : View("Vector HashTable Management") {
+class MainView : View("Хэш-таблица векторов") {
     private val hashTable = HashTable<Int, Vector>()
     private val tableView = tableview<Pair<Int, String>> {
-        column<Pair<Int, String>, Number>("Bucket Index") {
+        column<Pair<Int, String>, Number>("Номер Bucket") {
             SimpleObjectProperty(it.value.first)
         }
-        column<Pair<Int, String>, String>("Key and Value") {
+        column<Pair<Int, String>, String>("Ключ и значение") {
             SimpleObjectProperty(it.value.second)
         }
         columnResizePolicy = SmartResize.POLICY
@@ -36,30 +36,32 @@ class MainView : View("Vector HashTable Management") {
         VectorFactory.registerType("Cartesian Vector", CartesianVectorType())
     }
 
-    private val keyField = textfield { promptText = "Enter Key" }
-    private val valueField1 = textfield { promptText = "Enter Length" }
-    private val valueField2 = textfield { promptText = "Enter Angle" }
-    private val addButton = button("Add")
-    private val deleteButton = button("Delete")
-    private val findKeyField = textfield { promptText = "Enter Key to Find" }
-    private val findButton = button("Find")
-    private val findResultLabel = label("Enter a key and press 'Find' to search.")
-    private val exportButton = button("Export to CSV")
-    private val importButton = button("Import from CSV")
-    private val clearButton = button("Clear")
+    private val keyField = textfield { promptText = "Введите ключ" }
+    private val valueField1 = textfield { promptText = "Введите длину" }
+    private val valueField2 = textfield { promptText = "Введите угол" }
+    private val addButton = button("Добавить")
+    private val deleteButton = button("Удалить")
+    private val findKeyField = textfield { promptText = "Ключ поиска" }
+    private val findButton = button("Поиск")
+    private val findResultLabel = label("Введите ключ и нажмите 'Поиск'")
+    private val exportButton = button("Экспорт в CSV")
+    private val importButton = button("Импорт из CSV")
+    private val clearButton = button("Очистить")
 
     override val root = vbox(10) {
-        add(label("Hash Table Contents:"))
+        style {
+            backgroundColor += c("6667ab") // Установка светло-серого фона
+        }
         add(tableView)
         hbox(10) {
             add(comboBox)
             add(keyField)
             add(valueField1)
-            add(valueField2)
+            add(valueField2) }
+        hbox(10) {
             add(addButton)
             add(deleteButton)
-            add(clearButton)
-        }
+            add(clearButton) }
         hbox(10) {
             add(findKeyField)
             add(findButton)

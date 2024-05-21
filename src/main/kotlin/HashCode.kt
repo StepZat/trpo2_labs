@@ -46,15 +46,11 @@ class HashTable<K, V> where V : Vector {
     val size: Int
         get() = buckets.sumOf { it.size }
 
-    //fun getBucketData(): List<HashNode<K, V>> {
-    //    return buckets.flatMap { it }
-    //}
 
-    // В классе HashTable
     fun getBucketData(): List<Pair<Int, List<HashNode<K, V>>>> {
         return buckets.mapIndexed { index, bucket ->
-            index to bucket.toList() // Преобразуем MutableList в List
-        }.filter { it.second.isNotEmpty() } // Опционально: фильтруем пустые корзины
+            index to bucket.toList()
+        }.filter { it.second.isNotEmpty() }
     }
 
 
